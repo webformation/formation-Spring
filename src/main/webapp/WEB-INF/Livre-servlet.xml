@@ -20,4 +20,10 @@ and open the template in the editor.
       <property name = "suffix" value = ".jsp" />
    </bean>
    
+   <bean id="livreService" class="gestionlivre.service.ServiceLivreImpl" />
+   
+   <bean id="livreController" class="gestionlivre.controller.LivreController" >
+       <property name = "sl" ref = "livreService" />
+   </bean>
+   
 </beans>

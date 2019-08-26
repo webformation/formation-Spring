@@ -8,6 +8,7 @@ package gestionlivre.controller;
 import gestionlivre.Categorie;
 import gestionlivre.Langue;
 import gestionlivre.Livre;
+import gestionlivre.service.ServiceLivre;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
@@ -19,24 +20,23 @@ import org.springframework.ui.ModelMap;
 
 @Controller
 public class LivreController {
+    private ServiceLivre sl;
+
+    public void setSl(ServiceLivre sl) {
+        this.sl = sl;
+    }
+
+    public ServiceLivre getSl() {
+        return sl;
+    }
 
     @RequestMapping(value = "/formLivre", method = RequestMethod.GET)
     public ModelAndView livre() {
         Livre l = new Livre();
         l.setTitre("Spring");
         ModelAndView mav = new ModelAndView("livre", "command", l);
-        List<Categorie> listeCategorie = new ArrayList<Categorie>();
-        Categorie categorie = new Categorie();
-        categorie.setCategorieId(1);
-        categorie.setCategorieNom("Roman");
-        listeCategorie.add(categorie);
-        mav.getModelMap().addAttribute("categorieList",listeCategorie);
-        List<Langue> listeLangue = new ArrayList<Langue>();
-        Langue langue = new Langue();
-        langue.setLangueId(1);
-        langue.setLangueNom("Français");
-        listeLangue.add(langue);
-        mav.getModelMap().addAttribute("langueList", listeLangue);
+        mav.getModelMap().addAttribute("categorieList",sl.getCategories());
+        mav.getModelMap().addAttribute("langueList", sl.getLangues());
         return mav;
     }
 
@@ -45,10 +45,8 @@ public class LivreController {
         model.addAttribute("titre", livre.getTitre());
         model.addAttribute("auteur", livre.getAuteur());
         model.addAttribute("caterories", livre.getCategories());
-        model.addAttribute("langue", livre.getLangue());
-        /***
-         * @todo : il faudrait faire quelque chose pour stocker le livre, non ????????
-         */
+        model.addAttribute("langue", sl.getLangue(livre.getLangue()).getLangueNom());
+        sl.addLivre(livre);
         return "livreajoute";
     }
 
