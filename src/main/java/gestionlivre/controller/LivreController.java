@@ -20,8 +20,13 @@ public class LivreController {
    
     @RequestMapping(value = "/formLivre", method = RequestMethod.GET)
     public ModelAndView livre() {
-        return new ModelAndView("livre", "command",new Livre());
+        Livre l = new Livre();
+        l.setTitre("Spring");
+        return new ModelAndView("livre", "command",l);
     }
-
+    @RequestMapping(value = "/ajoutLivre", method = RequestMethod.POST)
+    public String addStudent(@ModelAttribute("SpringWeb") Livre livre, ModelMap model) {
+        return "livreajoute";
+    }
 
 }
