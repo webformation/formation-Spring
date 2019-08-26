@@ -15,6 +15,24 @@
                     <td><form:input path = "titre" /></td>
                 </tr>
                 <tr>
+                    <td><form:label path = "auteur">Auteur</form:label></td>
+                    <td><form:input path = "auteur" /></td>
+                </tr>
+                <tr>
+                    <td><form:label path = "categories">Categorie</form:label></td>
+                        <td>
+                        <form:checkboxes path="categories" items="${categorieList}" itemValue="categorieId" itemLabel="categorieNom" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><form:label path = "langue">Langue</form:label></td>
+                        <td>
+                        <form:select path="langue">
+                            <form:options items="${langueList}" itemValue="langueId" itemLabel="langueNom" />
+                        </form:select> 
+                    </td>
+                </tr>
+                <tr>
                     <td colspan = "2">
                         <input type = "submit" value = "Submit"/>
                     </td>
