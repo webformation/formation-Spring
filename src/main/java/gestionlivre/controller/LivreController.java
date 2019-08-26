@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionlivre;
+package gestionlivre.controller;
 
+import gestionlivre.Livre;
 import java.util.HashMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
