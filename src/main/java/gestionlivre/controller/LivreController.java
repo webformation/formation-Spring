@@ -41,7 +41,14 @@ public class LivreController {
     }
 
     @RequestMapping(value = "/ajoutLivre", method = RequestMethod.POST)
-    public String addStudent(@ModelAttribute("SpringWeb") Livre livre, ModelMap model) {
+    public String ajoutLivre(@ModelAttribute("SpringWeb") Livre livre, ModelMap model) {
+        model.addAttribute("titre", livre.getTitre());
+        model.addAttribute("auteur", livre.getAuteur());
+        model.addAttribute("caterories", livre.getCategories());
+        model.addAttribute("langue", livre.getLangue());
+        /***
+         * @todo : il faudrait faire quelque chose pour stocker le livre, non ????????
+         */
         return "livreajoute";
     }
 
