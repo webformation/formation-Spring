@@ -6,5 +6,6 @@
     </head>
     <body>
         <h1>Gestion des livres</h1>
+        <a href="<%= application.getContextPath() %>/formLivre">Saisie d'un livre</a>
     </body>
 </html>
