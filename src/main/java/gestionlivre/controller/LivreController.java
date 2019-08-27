@@ -44,7 +44,13 @@ public class LivreController {
     public String ajoutLivre(@ModelAttribute("SpringWeb") Livre livre, ModelMap model) {
         model.addAttribute("titre", livre.getTitre());
         model.addAttribute("auteur", livre.getAuteur());
-        model.addAttribute("caterories", livre.getCategories());
+
+        List<String> l = new ArrayList<String>();
+        for (int index: livre.getCategories()) {
+            l.add(sl.getCategorie(index).getCategorieNom());
+        }
+        model.addAttribute("caterories",l );
+        
         model.addAttribute("langue", sl.getLangue(livre.getLangue()).getLangueNom());
         sl.addLivre(livre);
         return "livreajoute";
