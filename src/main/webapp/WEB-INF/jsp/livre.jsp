@@ -32,6 +32,12 @@
                         </form:select> 
                     </td>
                 </tr>
+                                <tr>
+                    <td><form:label path = "langue">Langue</form:label></td>
+                        <td>
+                        <form:radiobuttons path="langue" items="${langueList}" itemValue="langueId" itemLabel="langueNom" /> 
+                    </td>
+                </tr>
                 <tr>
                     <td colspan = "2">
                         <input type = "submit" value = "Submit"/>
