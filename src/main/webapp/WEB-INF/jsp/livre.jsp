@@ -5,6 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Saisie livre</title>
+        <link href="<%= application.getContextPath() %>/css/styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <h1>Saisie Livre</h1>
@@ -12,7 +13,7 @@
             <table>
                 <tr>
                     <td><form:label path = "titre">Titre</form:label></td>
-                    <td><form:input path = "titre" /></td>
+                    <td><form:input path = "titre" class="exmple"/></td>
                 </tr>
                 <tr>
                     <td><form:label path = "auteur">Auteur</form:label></td>
